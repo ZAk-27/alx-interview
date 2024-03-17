@@ -9,7 +9,7 @@ def canUnlockAll(boxes):
     n = len(boxes)
     v_boxes = set([0])
     unv_boxes = set(boxes[0]).difference(set([0]))
-    while len(unseen_boxes) > 0:
+    while len(unv_boxes) > 0:
         boxkey = unv_boxes.pop()
         if not boxkey or boxkey >= n or boxkey < 0:
             continue
