@@ -7,7 +7,7 @@ import sys
 solutions = []
 """module.
 """
-nm = 0
+n = 0
 """module.
 """
 poz = None
@@ -18,17 +18,17 @@ poz = None
 def get_input():
     """module
     """
-    global nm
-    nm = 0
+    global n
+    n = 0
     if len(sys.argv) != 2:
         print("Usage: nqueens N")
         sys.exit(1)
     try:
-        nm = int(sys.argv[1])
+        n = int(sys.argv[1])
     except Exception:
         print("N must be a number")
         sys.exit(1)
-    if nm < 4:
+    if n < 4:
         print("N must be at least 4")
         sys.exit(1)
     return n
@@ -52,7 +52,7 @@ def group_exists(grp):
             for grp_poz in grp:
                 if stn_poz[0] == grp_poz[0] and stn_poz[1] == grp_poz[1]:
                     i += 1
-        if i == nm:
+        if i == n:
             return True
     return False
 
@@ -61,14 +61,14 @@ def build_solution(row, grp):
     """module.
     """
     global solutions
-    global nm
-    if row == nm:
+    global n
+    if row == n:
         tmp0 = grp.copy()
         if not grp_exists(tmp0):
             solutions.append(tmp0)
     else:
         for col in range(n):
-            a = (row * nm) + col
+            a = (row * n) + col
             matches = zip(list([poz[a]]) * len(grp), grp)
             used_positions = map(lambda x: is_attacking(x[0], x[1]), matches)
             grp.append(poz[a].copy())
@@ -80,14 +80,14 @@ def build_solution(row, grp):
 def get_solutions():
     """module.
     """
-    global poz, nm
-    poz = list(map(lambda x: [x // nm, x % n], range(nm ** 2)))
+    global poz, n
+    poz = list(map(lambda x: [x // n, x % n], range(n ** 2)))
     a = 0
     grp = []
     build_solution(a, grp)
 
 
-nm = get_input()
+n = get_input()
 get_solutions()
 for solution in solutions:
     print(solution)
