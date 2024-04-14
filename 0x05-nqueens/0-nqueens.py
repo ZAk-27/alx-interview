@@ -63,18 +63,18 @@ def build_solution(row, grp):
     global solutions
     global nm
     if row == nm:
-        tmp0 = group.copy()
-        if not group_exists(tmp0):
+        tmp0 = grp.copy()
+        if not grp_exists(tmp0):
             solutions.append(tmp0)
     else:
         for col in range(n):
             a = (row * nm) + col
             matches = zip(list([poz[a]]) * len(grp), grp)
             used_positions = map(lambda x: is_attacking(x[0], x[1]), matches)
-            group.append(poz[a].copy())
+            grp.append(poz[a].copy())
             if not any(used_positions):
                 build_solution(row + 1, grp)
-            group.pop(len(grp) - 1)
+            grp.pop(len(grp) - 1)
 
 
 def get_solutions():
