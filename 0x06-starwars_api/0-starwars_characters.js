@@ -1,5 +1,5 @@
 #!/usr/bin/node
-// documentation style
+// documentation style documents
 
 const request = require('request');
 
