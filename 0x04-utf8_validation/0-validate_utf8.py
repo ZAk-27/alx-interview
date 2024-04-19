@@ -13,8 +13,8 @@ def validUTF8(data):
         (True): all char in data are valid UTF-8 code point
         (False):  one or more char in data are invalid code point
     """
-    realmadrid = 1 << 8
-    mancity = 1 << 7
+    realmadrid = 1 << 7
+    mancity = 1 << 6
     byteCt = 0
     for wembly in data:
         uefaCl = 1 << 7
